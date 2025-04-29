@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://github.com/omsinf/hkoll/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="standoff-list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="divisionId" type="xs:string" />
+                <xs:element name="appType" type="xs:string" />
+                <xs:element name="standoff" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <!-- TODO OMS validate XHTML inside:
+                            https://stackoverflow.com/questions/17012597/how-can-i-include-html-in-my-xml-schema -->
+                            <xs:any processContents="lax" maxOccurs="unbounded" />
+                        </xs:sequence>
+                        <xs:attribute name="from" use="required" />
+                        <xs:attribute name="fromW" use="required" />
+                        <xs:attribute name="to" use="required" />
+                        <xs:attribute name="toW" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
