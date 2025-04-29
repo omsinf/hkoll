@@ -10,9 +10,7 @@
                 <xs:element name="standoff" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType mixed="true">
                         <xs:sequence>
-                            <!-- TODO OMS validate XHTML inside:
-                            https://stackoverflow.com/questions/17012597/how-can-i-include-html-in-my-xml-schema -->
-                            <xs:any processContents="lax" maxOccurs="unbounded" />
+                            <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
                         </xs:sequence>
                         <xs:attribute name="from" use="required" />
                         <xs:attribute name="fromW" use="required" />
