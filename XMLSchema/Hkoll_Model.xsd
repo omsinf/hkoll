@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:hkl="https://github.com/omsinf/hkoll/XMLSchema"
+    targetNamespace="https://github.com/omsinf/hkoll/XMLSchema" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+
+    <xs:element name="model" type="hkl:modelType" />
+
+    <xs:complexType name="modelType">
+        <xs:sequence>
+            <xs:element name="division" type="xs:string" />
+            <xs:element name="divisionId" type="xs:string" />
+            <xs:element name="divisionNr" type="xs:double" />
+            <xs:element name="transcript">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="section" type="hkl:sectionType" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="sectionType">
+        <xs:sequence>
+            <xs:element name="sectionName" type="xs:string" />
+            <xs:element name="sectionId" type="xs:string" />
+            <xs:element name="content">
+                <xs:complexType mixed="true">
+                    <xs:sequence>
+                        <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+                    </xs:sequence>
+                    <xs:attribute ref="xml:space" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subsecs" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="section" type="hkl:sectionType" minOccurs="0"
+                            maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
